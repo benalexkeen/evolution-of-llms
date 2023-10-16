@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Sentiment Analysis</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    </head>
+
+<body>
+    <div id="about" class="page-section">
+        <div id="tf-idf-treemap" style="height: 700px; width: 700px"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+    <script src = "https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/treemap.js"></script>
+    <script src="https://code.highcharts.com/modules/treegraph.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+<script type="text/javascript">
+    const data = [
+        {
+            id: '1.0',
+            parent: '',
+            name: 'Business',
+            collapsed: true
+        },
+        {
+            id: '1.1',
+            parent: '',
+            name: 'Sport',
+            collapsed: true
+        },
+        {
+            id: '1.2',
+            parent: '',
+            name: 'Politics',
+            collapsed: true
+        },
+
+        {
+            id: '2.1',
+            parent: '1.0',
+            name: 'Unigrams'
+        },
+
+        {
+            id: '2.0',
+            parent: '1.0',
+            name: 'Bigrams'
+        },
+        {
+            id: '2.3',
+            parent: '1.1',
+            name: 'Unigrams'
+        },
+
+        {
+            id: '2.2',
+            parent: '1.1',
+            name: 'Bigrams'
+        },
+        {
+            id: '2.5',
+            parent: '1.2',
+            name: 'Unigrams'
+        },
+
+        {
+            id: '2.4',
+            parent: '1.2',
+            name: 'Bigrams'
+        },
+        {
+            id: '3.0',
+            parent: '2.1',
+            name: 'Shares'
+        },
+        {
+            id: '3.1',
+            parent: '2.1',
+            name: 'Growth'
+        },
+        {
+            id: '3.2',
+            parent: '2.1',
+            name: 'Oil'
+        },
+        {
+            id: '3.3',
+            parent: '2.1',
+            name: 'Bank'
+        },
+        {
+            id: '3.4',
+            parent: '2.1',
+            name: 'Economy'
+        },
+        {
+            id: '3.5',
+            parent: '2.0',
+            name: 'Stock Market'
+        },
+        {
+            id: '3.6',
+            parent: '2.0',
+            name: 'Economic Growth'
+        },
+        {
+            id: '3.7',
+            parent: '2.0',
+            name: 'Analysts Said'
+        },
+        {
+            id: '3.8',
+            parent: '2.0',
+            name: 'Oil Prices'
+        },
+        {
+            id: '3.9',
+            parent: '2.0',
+            name: 'Chief Executive'
+        },
+        {
+            id: '4.0',
+            parent: '2.3',
+            name: 'Cup'
+        },
+        {
+            id: '4.1',
+            parent: '2.3',
+            name: 'Match'
+        },
+        {
+            id: '4.2',
+            parent: '2.3',
+            name: 'Coach'
+        },
+        {
+            id: '4.3',
+            parent: '2.3',
+            name: 'Injury'
+        },
+        {
+            id: '4.4',
+            parent: '2.3',
+            name: 'Season'
+        },
+        {
+            id: '4.5',
+            parent: '2.2',
+            name: 'Champions League'
+        },
+        {
+            id: '4.6',
+            parent: '2.2',
+            name: 'Australian Open'
+        },
+        {
+            id: '4.7',
+            parent: '2.2',
+            name: 'Grand Slam'
+        },
+        {
+            id: '4.8',
+            parent: '2.2',
+            name: 'Year Old'
+        },
+        {
+            id: '4.9',
+            parent: '2.2',
+            name: 'World Cup'
+        },
+        {
+            id: '5.0',
+            parent: '2.5',
+            name: 'Labour'
+        },
+        {
+            id: '5.1',
+            parent: '2.5',
+            name: 'Election'
+        },
+        {
+            id: '5.2',
+            parent: '2.5',
+            name: 'Blair'
+        },
+        {
+            id: '5.3',
+            parent: '2.5',
+            name: 'Party'
+        },
+        {
+            id: '5.4',
+            parent: '2.5',
+            name: 'Tory'
+        },
+        {
+            id: '5.5',
+            parent: '2.4',
+            name: 'Mr Blair'
+        },
+        {
+            id: '5.6',
+            parent: '2.4',
+            name: 'Tony Blair'
+        },
+        {
+            id: '5.7',
+            parent: '2.4',
+            name: 'Prime Minister'
+        },
+        {
+            id: '5.8',
+            parent: '2.4',
+            name: 'General Election'
+        },
+        {
+            id: '5.9',
+            parent: '2.4',
+            name: 'Mr Brown'
+        },
+    ];
+    Highcharts.chart('tf-idf-treemap', {
+    title: {
+        text: 'TF-IDF of BBC Articles by Category'
+    },
+    subtitle: {
+        text: 'Source: BBC Articles 2004-05'
+    },
+    credits: {
+        enabled: false
+    },
+    series: [
+        {
+            type: 'treegraph',
+            data,
+            tooltip: {
+                pointFormat: '{point.name}'
+            },
+            marker: {
+                symbol: 'rect',
+                width: '25%'
+            },
+            borderRadius: 10,
+            dataLabels: {
+                pointFormat: '{point.name}',
+                style: {
+                    whiteSpace: 'nowrap'
+                }
+            },
+            levels: [
+                {
+                    level: 1,
+                    colorByPoint: true
+                },
+                {
+                    level: 2,
+                    colorVariation: {
+                        key: 'brightness',
+                        to: -0.5
+                    }
+                },
+                {
+                    level: 3,
+                    colorVariation: {
+                        key: 'brightness',
+                        to: -0.5
+                    }
+                },
+                {
+                    level: 4,
+                    colorVariation: {
+                        key: 'brightness',
+                        to: 0.5
+                    }
+                }
+            ]
+        }
+    ]
+});
+</script>
+</body>
+</html>

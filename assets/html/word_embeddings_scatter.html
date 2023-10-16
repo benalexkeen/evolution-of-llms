@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Word Embeddings Scatter</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: 'Open Sans', arial, sans-serif;
+            }
+            ul {
+                list-style: none;
+            }
+            p {
+                color: #5a5a5a;
+                font-size: 13px;
+                letter-spacing: 0.25px;
+                line-height: 24px;
+            }
+            .primary-button a {
+                display: inline-block;
+                background-color: #CC0000;
+                padding: 12px 18px;
+                color: #fff;
+                font-size: 11px;
+                font-weight: 500;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                text-decoration: none;
+                border-radius: 20px;
+                transition: all 0.5s;
+            }
+            .primary-button a:hover {
+                background-color: #AC1F25;
+            }
+
+            #about {
+                background-color: #fff;
+                padding: 20px 0px;
+            }
+
+            #about .section-heading {
+                margin-bottom: 60px;
+            }
+        </style>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    </head>
+
+<body>
+    <div id="about" class="page-section">
+        <div class="primary-button">
+            <a id="AddSeriesButton" href="javascript:void(0)">Add Series</a>
+        </div>
+        <br>
+        <div id="word-embeddings-scatter-chart" style="height: 500px; width: 750px"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+    <script src = "https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+<script type="text/javascript">
+    "use strict";
+    /* global $ */
+    var animationFrame = 0;
+    var dataSeries = [{
+        dataLabels: {
+            enabled: true,
+            x:40,
+            formatter:function() {
+                return this.point.name;
+            },
+            style:{color:"black"}
+        },
+        name: 'Word Embeddings 1',
+        color: '#469990',
+        dashStyle: 'Dash',
+        linecolour: '#ccc',
+        data: [{
+            "x": 1.5,
+            "y": 3.5,
+            "name":"Man"
+        }, {
+            "x": 3.2,
+            "y": 6.7,
+            "name":"King"
+        }, {
+            "x": 5.4,
+            "y": 7.5,
+            "name":"Prince"
+        }],
+        line: {
+            dashStyle: 'Dash',
+            color: '#ccc'
+        }
+    },
+    {
+        dataLabels: {
+            enabled: true,
+            x:40,
+            formatter:function() {
+                return this.point.name;
+            },
+            style:{color:"black"}
+        },
+        name: 'Word Embeddings 2',
+        color: '#f032e6',
+        dashStyle: 'Dash',
+        linecolour: '#ccc',
+        data: [{
+            "x": 2,
+            "y": 2,
+            "name":"Woman"
+        }, {
+            "x": 4,
+            "y": 5.3,
+            "name":"Queen"
+        }, {
+            "x": 6,
+            "y": 6.2,
+            "name":"Princess"
+        }],
+        line: {
+            dashStyle: 'Dash',
+        }
+    },
+    {
+        dataLabels: {
+            enabled: true,
+            x:40,
+            formatter:function() {
+                return this.point.name;
+            },
+            style:{color:"black"}
+        },
+        name: 'Word Embeddings 3',
+        color: '#800000',
+        dashStyle: 'Dash',
+        lineWidth: 0,
+        data: [
+            {
+                "x": 7,
+                "y": 1,
+                "name":"Houses"
+            },
+            {
+                "x": 0.5,
+                "y": 8,
+                "name":"Running"
+            },
+        ],
+        line: {
+            dashStyle: 'Dash',
+            lineColor: '#ccc',
+            
+
+        }
+    }]
+
+    $('#word-embeddings-scatter-chart').highcharts({
+        chart: {
+            backgroundColor: 'rgba(255, 255, 255, 0.0)',
+            height: 500
+        },
+        credits: {
+        enabled: false
+        },
+        title: {
+            text: ''
+        },
+        series: dataSeries.slice(0, 1),
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                animation: false
+            }
+        },
+        xAxis: {
+            title: {
+                useHTML: true,
+                text: 'X<sub>1</sub>'
+            },
+            min: 0,
+            max: 7,
+            labels: {
+                enabled: false
+            },
+            minorTickLength: 0,
+            tickLength: 0
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: 'X<sub>2</sub>'
+            },
+            labels: {
+                enabled: false
+            },
+            min: 0,
+            max: 8,
+        },
+        tooltip: {
+            formatter: function() {
+                return this.point.name;
+            }
+        },
+    });
+
+    function updateWordEmbeddingsChart(animationFrame) {
+        $('#word-embeddings-scatter-chart').highcharts({
+            chart: {
+                backgroundColor: 'rgba(255, 255, 255, 0.0)',
+                height: 500
+            },
+            credits: {
+            enabled: false
+            },
+            title: {
+                text: ''
+            },
+            series: dataSeries.slice(0, animationFrame+1),
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    animation: false
+                }
+            },
+            xAxis: {
+                title: {
+                    useHTML: true,
+                    text: 'X<sub>1</sub>'
+                },
+                min: 0,
+                max: 7,
+                labels: {
+                    enabled: false
+                },
+                minorTickLength: 0,
+                tickLength: 0
+            },
+            yAxis: {
+                title: {
+                    useHTML: true,
+                    text: 'X<sub>2</sub>'
+                },
+                labels: {
+                    enabled: false
+                },
+                min: 0,
+                max: 8,
+            },
+            tooltip: {
+                formatter: function() {
+                    return this.point.name;
+                }
+            },
+        });
+        return false;
+    }
+
+
+    $('#AddSeriesButton').on('click', function() {
+        animationFrame++;
+        console.log(animationFrame)
+        updateWordEmbeddingsChart(animationFrame); 
+    });
+</script>
+</body>
+</html>

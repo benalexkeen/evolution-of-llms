@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Skip-Gram Arc Diagram</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    </head>
+
+<body>
+    <div id="about" class="page-section">
+        <div id="skip-gram-arc-diagram" style="height: 500px; width: 700px"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+    <script src = "https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/arc-diagram.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+<script type="text/javascript">
+Highcharts.chart('skip-gram-arc-diagram', {
+    colors: ['#293462', '#a64942', '#fe5f55', '#7771c1', '#5bd1d7', '#ff502f', '#004d61', '#ff8a5c', '#fff591', '#f5587b', '#fad3cf', '#a696c8', '#5BE7C4', '#266A2E', '#593E1A'],
+
+    title: {
+        text: ''
+    },
+
+    accessibility: {
+        description: '',
+        point: {
+            valueDescriptionFormat: 'Connection from {point.from} to {point.to}.'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        keys: ['from', 'to', 'weight'],
+        type: 'arcdiagram',
+        name: 'CBOW',
+        linkWeight: 0.5,
+        centeredLinks: true,
+        nodeWidth: 5,
+        linewidth: 1,
+        dataLabels: {
+            rotation: 90,
+            y: 30,
+            align: 'left',
+            color: 'black'
+        },
+        offset: '65%',
+        equalNodes: true,
+        data: [
+            ['?', '? ', 0],
+            ['? ', '? ', 0],
+            ['?', 'Prince', 1],
+            ['? ', 'Prince', 1],
+            ['Prince', 'Prince', 1],
+            ['?   ', 'Prince', 1],
+            ['?    ', 'Prince', 1],
+            ['?     ', 'Prince', 1],
+            ['?      ', 'Prince', 1],
+            ['?       ', 'Prince', 1],
+            ['?        ', 'Prince', 1]
+        ]
+    }]
+
+    });
+
+</script>
+</body>
+</html>

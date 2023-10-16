@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Sentiment Analysis</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    </head>
+
+<body>
+    <div id="about" class="page-section">
+        <div id="tf-idf-venn" style="height: 700px; width: 700px"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+    <script src = "https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/venn.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+<script type="text/javascript">
+    Highcharts.chart('tf-idf-venn', {
+    accessibility: {
+        point: {
+            descriptionFormat: '{add index 1}. Intersection: {sets}. ' +
+                '{#if (gt sets.length 1)}{name}. {/if}' +
+                'Value {value}'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        type: 'venn',
+        data: [{
+            sets: ['Business'],
+            value: 2
+        }, {
+            sets: ['Sport'],
+            value: 2
+        }, {
+            sets: ['Politics'],
+            value: 2
+        }, {
+            sets: ['Business', 'Sport'],
+            value: 1,
+            name: '"Record"<br/> "Lost"<br/> "United" <br/> "Move"'
+        }, {
+            sets: ['Sport', 'Politics'],
+            value: 1,
+            name: '"England"<br/> "Decision"<br/> "Home"<br/> "Right"'
+        }, {
+            sets: ['Business', 'Politics'],
+            value: 1,
+            name: '"Spending"<br/> "Minister"<br/> "Tax" <br/> "Budget""'
+        }, {
+            sets: ['Business', 'Sport', 'Politics'],
+            value: 1,
+            name: '"Country"<br/> "World"<br/> "Former" <br/> "European"'
+        }]
+    }],
+    title: {
+        text: 'Common Terms Between BBC Article Categories'
+    },
+    subtitle: {
+        text:
+    'Source: BBC Articles 2004-05'
+    },
+});
+</script>
+</body>
+</html>

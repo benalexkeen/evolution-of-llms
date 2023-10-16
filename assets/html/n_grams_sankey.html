@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Sentiment Analysis</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: 'Open Sans', arial, sans-serif;
+            }
+            ul {
+                list-style: none;
+            }
+            p {
+                color: #5a5a5a;
+                font-size: 13px;
+                letter-spacing: 0.25px;
+                line-height: 24px;
+            }
+            .primary-button a {
+                display: inline-block;
+                background-color: #CC0000;
+                padding: 12px 18px;
+                color: #fff;
+                font-size: 11px;
+                font-weight: 500;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                text-decoration: none;
+                border-radius: 20px;
+                transition: all 0.5s;
+            }
+            .primary-button a:hover {
+                background-color: #AC1F25;
+            }
+
+            #about {
+                background-color: #fff;
+                padding: 20px 0px;
+            }
+
+            #about .section-heading {
+                margin-bottom: 60px;
+            }
+        </style>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    </head>
+
+<body>
+    <div id="about" class="page-section">
+        <div id="n-grams-sankey" style="height: 1200px; width: 700px"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+    <script src = "https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+<script type="text/javascript">
+    Highcharts.chart('n-grams-sankey', {
+
+title: {
+    text: 'Top 50 He & She Trigrams from Jane Austen Novels'
+},
+subtitle: {
+    text:
+  'Source: Project Gutenberg'
+},
+accessibility: {
+    point: {
+        valueDescriptionFormat: '{index}. {point.from} to {point.to}, {point.weight}.'
+    }
+},
+tooltip: {
+    headerFormat: null,
+    pointFormat:
+  '{point.fromNode.name} \u2192 {point.toNode.name}: {point.weight} instances',
+    nodeFormat: '{point.name}: {point.sum} instances'
+},
+credits: {
+    enabled: false
+},
+series: [{
+    keys: ['from', 'to', 'weight'],
+    nodes: [
+        {
+            id: 'She',
+            color: '#ba3b64',
+            offset: 50
+        },
+        {
+            id: 'He',
+            color: '#388383',
+            offset: 50
+        },
+        {
+            id: "Began",
+            column: 2
+        },
+        {
+            id: "Came",
+            column: 2
+        },
+        {
+            id: "Could",
+            column: 2
+        },
+        {
+            id: "Did",
+            column: 2
+        },
+        {
+            id: "Does",
+            column: 2
+        },
+        {
+            id: "Felt",
+            column: 2
+        },
+        {
+            id: "Found",
+            column: 2
+        },
+        {
+            id: "Had",
+            column: 2
+        },
+        {
+            id: "Has",
+            column: 2
+        },
+        {
+            id: "Is",
+            column: 2
+        },
+        {
+            id: "Looked",
+            column: 2
+        },
+        {
+            id: "May",
+            column: 2
+        },
+        {
+            id: "Meant",
+            column: 2
+        },
+        {
+            id: "Might",
+            column: 2
+        },
+        {
+            id: "Must",
+            column: 2
+        },
+        {
+            id: "Ought",
+            column: 2
+        },
+        {
+            id: "Seemed",
+            column: 2
+        },
+        {
+            id: "Should",
+            column: 2
+        },
+        // {
+        //     id: "Thought",
+        //     column: 2
+        // },
+        {
+            id: "Was",
+            column: 2
+        },
+        {
+            id: "Will",
+            column: 2
+        },
+        {
+            id: "Would",
+            column: 2
+        },
+        {
+            id: "A",
+            column: 3
+        },
+        {
+            id: "At",
+            column: 3
+        },
+        {
+            id: "Be",
+            column: 3
+        },
+        {
+            id: "Been",
+            column: 3
+        },
+        {
+            id: "Done",
+            column: 3
+        },
+        {
+            id: "Gone",
+            column: 3
+        },
+        {
+            id: "Have",
+            column: 3
+        },
+        {
+            id: "In",
+            column: 3
+        },
+        // {
+        //     id: "It",
+        //     column: 3
+        // },
+        {
+            id: "Never",
+            column: 3
+        },
+        {
+            id: "No",
+            column: 3
+        },
+        {
+            id: "Not",
+            column: 3
+        },
+        {
+            id: "Seen",
+            column: 3
+        },
+        {
+            id: "So",
+            column: 3
+        },
+        {
+            id: "The",
+            column: 3
+        },
+        {
+            id: "To",
+            column: 3
+        },
+        {
+            id: "Very",
+            column: 3
+        }
+    ],
+
+    data: [
+        ['He', 'Had', 450],
+        ['He', 'Did', 147],
+        ['He', 'Could', 173],
+        ['He', 'Was', 319],
+        ['He', 'Would', 169],
+        ['He', 'Is', 208],
+        ['He', 'Will', 74],
+        ['He', 'Has', 73],
+        ['He', 'Must', 78],
+        ['He', 'Should', 95],
+        ['He', 'Does', 43],
+        ['He', 'Might', 75],
+        ['He', 'Ought', 28],
+        ['He', 'Came', 26],
+        ['He', 'Seemed', 25],
+        ['He', 'Began', 21],
+        ['He', 'Looked', 19],
+        ['He', 'May', 18],
+        ['He', 'Meant', 17],
+        ['She', 'Could', 487],
+        ['She', 'Had', 749],
+        ['She', 'Did', 175],
+        ['She', 'Would', 233],
+        ['She', 'Was', 488],
+        ['She', 'Does', 55],
+        ['She', 'Might', 98],
+        ['She', 'Will', 69],
+        ['She', 'Is', 112],
+        ['She', 'Must', 81],
+        ['She', 'Felt', 40],
+        ['She', 'Should', 38],
+        ['She', 'Ought', 38],
+        ['She', 'Has', 36],
+        ['She', 'Found', 34],
+        ['She', 'Began', 33],
+        ['She', ' ', 1],
+        ['Had', 'Been', 406],
+        ['Did', 'Not', 322],
+        ['Could', 'Not', 503],
+        ['Was', 'Not', 175],
+        ['Had', 'Not', 192],
+        ['Would', 'Have', 151],
+        ['Would', 'Not', 166],
+        ['Is', 'A', 102],
+        ['Will', 'Be', 98],
+        ['Is', 'Not', 88],
+        ['Has', 'Been', 82],
+        ['Would', 'Be', 85],
+        ['Must', 'Be', 86],
+        ['Should', 'Be', 81],
+        ['Does', 'Not', 98],
+        ['Had', 'Never', 124],
+        ['Might', 'Have', 90],
+        ['Was', 'In', 97],
+        ['Was', 'To', 69],
+        ['Might', 'Be', 60],
+        ['Had', 'A', 79],
+        ['Had', 'Done', 57],
+        ['Was', 'A', 78],
+        ['Must', 'Have', 73],
+        ['Is', 'Very', 61],
+        ['Had', 'No', 107],
+        ['Was', 'So', 62],
+        ['Was', 'Very', 85],
+        ['Should', 'Not', 29],
+        ['Ought', 'To', 66],
+        ['Is', 'So', 27],
+        ['Has', 'Not', 27],
+        ['Could', 'Have', 70],
+        ['Was', 'Gone', 26],
+        ['Came', 'To', 26],
+        ['Seemed', 'To', 25],
+        ['Was', 'At', 52],
+        ['Had', 'Seen', 60],
+        ['Should', 'Have', 23],
+        ['Will', 'Not', 45],
+        ['Began', 'To', 54],
+        ['Is', 'The', 21],
+        ['Is', 'In', 21],
+        ['Was', 'The', 47],
+        ['Had', 'The', 56],
+        ['Could', 'Be', 41],
+        ['Had', 'To', 19],
+        ['Looked', 'At', 19],
+        ['May', 'Be', 18],
+        ['Meant', 'To', 17],
+        ['Had', 'Heard', 44],
+        ['Felt', 'That', 40],
+        ['Found', 'Herself', 34],
+        ['Was', 'Sure', 32],
+        ['Was', 'Quite', 32],
+        ['Had', 'Ever', 32],
+        ['Was', 'Obliged', 27],
+        ['Was', 'Now', 25],
+        ['Could', 'Only', 24],
+        ['Had', 'Always', 23],
+        ['Might', 'Not', 23],
+        ['Could', 'Hardly', 22]
+    ],
+    type: 'sankey',
+    name: 'Sankey demo series'
+}]
+
+});
+</script>
+</body>
+</html>
