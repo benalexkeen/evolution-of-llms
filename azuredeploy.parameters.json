@@ -6,7 +6,7 @@
       "value": "airlift-evolution-of-llms"
     },
     "sku": {
-      "value": "S1"
+      "value": "P1v3"
     },
     "linuxFxVersion": {
       "value": "PYTHON|3.9"
