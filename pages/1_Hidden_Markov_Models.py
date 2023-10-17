@@ -30,12 +30,12 @@ def update_graph(state=0):
         graph.edge('Welcome', 'Welcome', label='5%')
     if state == 3:
         graph.edge('to', 'London', label='25%')
-        graph.edge('to', 'England', label='25%')
+        graph.edge('to', 'Airlift', label='25%')
         graph.edge('to', 'Microsoft', label='25%')
         graph.edge('to', 'my', label='25%')
     if state >= 4:
         graph.edge('to', 'London', label='25%')
-        graph.edge('to', 'England', label='25%')
+        graph.edge('to', 'Airlift', label='25%')
         graph.edge('to', 'Microsoft', label='25%')
         graph.edge('to', 'my', label='25%', color='red')
     if state >= 5:

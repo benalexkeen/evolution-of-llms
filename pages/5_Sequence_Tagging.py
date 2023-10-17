@@ -12,7 +12,7 @@ setup_page(wide_layout=True)
 
 st.markdown("""## Sequence Tagging""")
 
-st.markdown("""<blockquote><em>I like being a developer at Microsoft!</em></blockquote>""", unsafe_allow_html=True)
+st.markdown("""<blockquote><em>Ben Keen likes being a developer at Microsoft!</em></blockquote>""", unsafe_allow_html=True)
 
 annotated_text(
     ("Ben Keen ", "Proper Noun"),

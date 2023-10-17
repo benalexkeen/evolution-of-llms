@@ -16,3 +16,8 @@ HTML_ASSETS_DIR = os.path.join(__here__, '..', 'assets', 'html')
 with open(os.path.join(HTML_ASSETS_DIR, 'neural_networks.html'), 'r', encoding='utf-8') as f:
     nn_html_data = f.read()
 components.html(nn_html_data, height=800, width=1200)
+
+st.markdown("""
+#### References
+- <a href="https://playground.tensorflow.org/">Tensorflow Playground</a>
+""", unsafe_allow_html=True)

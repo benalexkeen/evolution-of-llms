@@ -50,7 +50,7 @@ st.image(rnn_long_term)
 
 st.markdown(
     """
-    ## LSTM-RNNs
+    ## Long Short-Term Memory RNNs
     """)
 
 
@@ -119,4 +119,6 @@ st.markdown("""
 - <a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTMs - Christopher Olah</a>
 - <a href="https://www.researchgate.net/publication/13853244_Long_Short-term_Memory">Long-Short Term Memory (1997) Hochreiter and Schmidhuber</a>
 - <a href="https://en.wikipedia.org/wiki/Vanishing_gradient_problem">Vanishing Gradient Problem - Wikipedia</a>
+- <a href="https://medium.com/deep-writing/harry-potter-written-by-artificial-intelligence-8a9431803da6#.4zhk8cgql"> Harry Potter Written by Artificial Intelligence - Max Deutsche</a>
+- <a href="https://www.youtube.com/watch?v=LY7x2Ihqjmc"> Sunspring - A Sci-Fi Short Film Starring Thomas Middleditch</a>
 """, unsafe_allow_html=True)

@@ -50,7 +50,7 @@ with col2:
         on_click=reset_counter
     )
 
-st.markdown('<br/><br/>', unsafe_allow_html=True)
+st.markdown('<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>', unsafe_allow_html=True)
 
 st.markdown('### An Example: He/She Trigrams')
 
